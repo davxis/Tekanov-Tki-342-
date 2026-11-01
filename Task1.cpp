@@ -18,23 +18,29 @@ long long bubbleSort(std::vector<int> arr) {
     return comparisons;
 }
 
-// 2. Метод вставок
-long long insertionSort(std::vector<int> arr) {
+// 2. Метод вставок 
+long long insertionSort(std::vector<int>& arr) {
     long long comparisons = 0;
     int n = arr.size();
     for (int i = 1; i < n; ++i) {
         int key = arr[i];
-        int j = i - 1;
-        while (j >= 0) {
+        
+        // Поиск места вставки методом половинного деления 
+        int left = 0;
+        int right = i - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
             comparisons++;
-            if (arr[j] > key) {
-                arr[j + 1] = arr[j];
-                j--;
+            if (arr[mid] > key) {
+                right = mid - 1;
             } else {
-                break;
+                left = mid + 1;
             }
         }
-        arr[j + 1] = key;
+        
+        // Безопасная вставка в std::vector с учетом выделенной памяти
+        arr.erase(arr.begin() + i);
+        arr.insert(arr.begin() + left, key);
     }
     return comparisons;
 }

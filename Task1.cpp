@@ -46,7 +46,6 @@ long long insertionSort(std::vector<int>& arr) {
 }
 
 // 3. Метод Хоара 
-int hoarePartition(std::vector<int>& arr, int low, int high, long long& comparisons) {
     int pivot = arr[low + (high - low) / 2];
     int i = low - 1;
     int j = high + 1;
@@ -76,7 +75,7 @@ void hoareQuickSort(std::vector<int>& arr, int low, int high, long long& compari
     }
 }
 
-long long hoareSort(std::vector<int> arr) {
+long long hoareSort(std::vector<int>& arr) {
     long long comparisons = 0;
     if (!arr.empty()) {
         hoareQuickSort(arr, 0, arr.size() - 1, comparisons);

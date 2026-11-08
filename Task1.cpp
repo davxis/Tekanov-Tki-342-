@@ -18,7 +18,7 @@ long long bubbleSort(std::vector<int> arr) {
     return comparisons;
 }
 
-// 2. Метод вставок с бинарным поиском
+// 2. Метод вставок
 long long insertionSort(std::vector<int>& arr) {
     long long comparisons = 0;
     int n = arr.size();
@@ -38,14 +38,14 @@ long long insertionSort(std::vector<int>& arr) {
             }
         }
         
-        // Сдвиг элементов вручную или через insert/erase
+        // Сдвиг элементов вручную 
         arr.erase(arr.begin() + i);
         arr.insert(arr.begin() + left, key);
     }
     return comparisons;
 }
 
-// 3. Метод Хоара (Быстрая сортировка)
+// 3. Метод Хоара 
 int hoarePartition(std::vector<int>& arr, int low, int high, long long& comparisons) {
     int pivot = arr[low + (high - low) / 2];
     int i = low - 1;
@@ -97,7 +97,6 @@ int main() {
         original_arr[i] = dis(gen);
     }
 
-    // Создаем независимые копии для каждого алгоритма
     std::vector<int> arr1 = original_arr;
     std::vector<int> arr2 = original_arr;
     std::vector<int> arr3 = original_arr;
